@@ -56,6 +56,6 @@ public class prefixSum2DrangeQuery {
 
         scanner.close();
     }
-} {
-    
 }
+  
+
