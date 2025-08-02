@@ -1,24 +1,40 @@
-
 import java.util.*;
+import java.io.*;
 
 public class makealmostequalwithmod {
-
-    public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
-        int n = sc.nextInt();
-        long [] v = new long[n];
-        for(int i =1; i<=61 ; i++){
-            long num = (1L<<1);
-            Set<Long> set = new HashSet<>();
-            for(int j =0 ; j<n ;j++){
-                set.add(v[j]%num);
+    
+    static void solve() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        int n = Integer.parseInt(br.readLine());
+        long[] v = new long[n];
+        
+        String[] input = br.readLine().split(" ");
+        for (int i = 0; i < n; i++) {
+            v[i] = Long.parseLong(input[i]);
+        }
+        
+        for (int i = 1; i <= 61; i++) {
+            long num = (1L << i);  // 2^i
+            Set<Long> st = new HashSet<>();
+            
+            for (int j = 0; j < n; j++) {
+                st.add(v[j] % num);
             }
-            if(set.size()==2){
+            
+            if (st.size() == 2) {
                 System.out.println(num);
                 return;
             }
-                sc.close();
         }
+    }
     
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        
+        while (t-- > 0) {
+            solve();
+        }
     }
 }
