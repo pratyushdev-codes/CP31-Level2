@@ -1,40 +1,28 @@
 import java.util.*;
+
 public class SquareDifference {
 
-    public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
-        int t =sc.nextInt();
-        while(t-->0){
-
-   
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        if(a-b!=1){
-            System.out.println("NO");
-            return;
+    static boolean isPrime(long n) {
+        if (n <= 1) return false;
+        for (long i = 2; i * i <= n; i++) {
+            if (n % i == 0) return false;
         }
+        return true;
+    }
 
-        int num = a+b;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
 
-        int count = 0;
-        for(int i =2 ; i *i<= num ; i++){
-            if(num%i==0){
-                count++;
-                while(num%i==0){
-                    num/=i;
-                }
+        while (t-- > 0) {
+            long a = sc.nextLong();
+            long b = sc.nextLong();
+
+            if (Math.abs(a - b) == 1 && isPrime(a + b)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
             }
         }
-        if(num>1){
-            count++;
-        }
-
-        if(count==1){
-            System.out.println("YES");
-        }else{
-            System.out.println("NO");
-        }
-        
     }
 }
-     }
